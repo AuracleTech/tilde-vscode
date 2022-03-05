@@ -1,0 +1,36 @@
+{
+	"name": "tilde",
+	"displayName": "Tilde Syntax Highlighter",
+	"description": "Syntax highlighter on Tilde files",
+	"version": "0.0.1",
+	"author": "Auracle",
+	"icon": "/img/icon.png",
+	"engines": {
+		"vscode": "^1.65.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "tilde",
+				"aliases": [
+					"tilde"
+				],
+				"extensions": [
+					"tilde",
+					"auracle"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "tilde",
+				"scopeName": "source.tilde",
+				"path": "./syntaxes/tilde.tmLanguage.json"
+			}
+		]
+	}
+}
