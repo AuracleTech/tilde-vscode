@@ -6,82 +6,84 @@
 			"include": "#comments"
 		},
 		{
-			"include": "#statements"
+			"include": "#functions"
 		},
 		{
-			"include": "types"
+			"include": "#storages"
 		},
 		{
-			"include": "#strings"
-		},
-		{
-			"include": "#numbers"
+			"include": "#keywords"
 		},
 		{
 			"include": "#operators"
 		},
 		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#chars"
+		},
+		{
+			"include": "#strings"
+		},
+		{
 			"include": "#variables"
+		},
+		{
+			"include": "#unexpected"
 		}
 	],
 	"repository": {
 		"comments": {
 			"patterns": [
 				{
-					"name": "comment.line.number-sign",
+					"name": "comment.line.tilde",
 					"begin": "\\s*#",
 					"end": "$"
 				},
 				{
 					"name": "comment.block.tilde",
-					"begin": "\\s*\\/",
-					"end": "\\/"
+					"begin": "\\s*~",
+					"end": "~"
 				}
 			]
 		},
-		"statements": {
+		"functions": {
+			"patterns": [
+				{
+					"name": "variable.parameter.tilde",
+					"match": "^\\b(def|main) ?([a-z_]+)? ?([a-z_ ]+)?\\s",
+					"captures": {
+						"1": {
+							"name": "keyword.control.tilde"
+						},
+						"2": {
+							"name": "entity.name.function.tilde"
+						}
+					}
+				}
+			]
+		},
+		"storages": {
+			"patterns": [
+				{
+					"match": "\\b(import|obj|class|const|let) ?([a-z_]+)?\\b",
+					"captures": {
+						"0": {
+							"name": "variable.other.tilde"
+						},
+						"1": {
+							"name": "storage.type.tilde"
+						}
+					}
+				}
+			]
+		},
+		"keywords": {
 			"patterns": [
 				{
 					"name": "keyword.control.tilde",
-					"match": "\\b(if|else|while|for|do|break|continue|return|try|catch|finally|throw|switch|case|default|with|new|delete|typeof|instanceof|in|as|is|void|function|class|extends|this|super|import|export|from|async|await|public|private|protected|static|readonly|abstract|const|enum|implements|interface|let|package|protected|yield|volatile)\\b"
-				}
-			]
-		},
-		"types": {
-			"patterns": [
-				{
-					"name": "support.type.tilde",
-					"match": "\\b(boolean|byte|char|double|float|int|long|short|void)\\b"
-				}
-			]
-		},
-		"strings": {
-			"name": "string.quoted.double.tilde",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.tilde",
-					"match": "\\\\."
-				}
-			]
-		},
-		"char": {
-			"name": "string.quoted.single.tilde",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
-				{
-					"name": "constant.character.escape.tilde",
-					"match": "\\\\."
-				}
-			]
-		},
-		"numbers": {
-			"patterns": [
-				{
-					"name": "constant.numeric.tilde",
-					"match": "\\b(0x[0-9a-fA-F]+|[0-9]+(\\.[0-9]+)?)\\b"
+					"match": "(\\?|if|else|return)"
 				}
 			]
 		},
@@ -89,7 +91,30 @@
 			"patterns": [
 				{
 					"name": "keyword.operator.tilde",
-					"match": "\\=|\\+|\\-|\\*|\\/|\\%|\\^|\\&|\\||\\<|\\>|\\!"
+					"match": "\\:|\\=|\\+|\\-|\\*|\\/|\\%|\\^|\\&|\\||\\<|\\>|\\!"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.tilde",
+					"begin": "\\b[0-9]+",
+					"end": "\\b"
+				}
+			]
+		},
+		"chars": {
+			"name": "variable.language.tilde",
+			"match": "'.'"
+		},
+		"strings": {
+			"name": "string.quoted.double.tilde",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"match": "\\\\."
 				}
 			]
 		},
@@ -97,7 +122,7 @@
 			"patterns": [
 				{
 					"name": "variable.other.tilde",
-					"match": "\\b([a-z_]\\w*\\b)"
+					"match": "\\b[a-z_][a-z_]+\\b"
 				}
 			]
 		},
@@ -105,7 +130,7 @@
 			"patterns": [
 				{
 					"name": "invalid.illegal.tilde",
-					"match": "\\b[A-Za-z_]\\w*\\b"
+					"match": "."
 				}
 			]
 		}
