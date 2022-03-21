@@ -2,7 +2,7 @@
 	"name": "tilde",
 	"displayName": "Tilde Syntax Highlighter",
 	"description": "Syntax highlighter on Tilde files",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "Auracle",
 	"repository": "https://github.com/AuracleTech/Tilde-vscode",
 	"publisher": "Auracle",
