@@ -2,9 +2,11 @@
 	"name": "tilde",
 	"displayName": "Tilde Syntax Highlighter",
 	"description": "Syntax highlighter on Tilde files",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Auracle",
-	"icon": "/img/icon.png",
+	"repository": "https://github.com/AuracleTech/Tilde-vscode",
+	"publisher": "Auracle",
+	"icon": "img/icon.png",
 	"engines": {
 		"vscode": "^1.65.0"
 	},
@@ -16,11 +18,12 @@
 			{
 				"id": "tilde",
 				"aliases": [
+					"ti",
 					"tilde"
 				],
 				"extensions": [
 					"tilde",
-					"auracle"
+					"ti"
 				],
 				"configuration": "./language-configuration.json"
 			}
